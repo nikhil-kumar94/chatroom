@@ -1,0 +1,37 @@
+{%extends 'main.html'%}
+
+{%block content%}
+<style>
+   .home-container
+   {
+      display:grid;
+      grid-template-columns: 1fr 3fr 1fr;
+
+   }
+</style>
+ <h1>{{text}}</h1>
+ <div class="home-container">
+   <div>
+      
+   </div>
+
+
+   <div>
+      <h5>{{room_count}} rooms available</h5>
+      <div><a href="create-room/">create</a></div>
+      
+      
+      {%include 'base/feed_components.html'%}
+
+ </div>
+
+
+ <div>
+    <h3>Recent Activity</h3>
+      {%include 'base/activity_component.html'%}
+  
+ </div>
+ 
+ 
+ </div>
+{%endblock%}

@@ -1,0 +1,36 @@
+{%extends 'main.html'%}
+
+{%block content%}
+<style>
+   .room-container{
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+
+   }
+</style>
+ <h1>{{text}}</h1>
+<div class="room-container">
+   <div>
+     
+      <h4>{{room.id}}--{{room.name}}</h4>
+      <h3>recent chats</h3>
+      {%include 'base/activity_component.html'%}
+      {%if request.user.is_authenticated%}
+      <form action="" method="post">
+         {%csrf_token%}
+         <input type="text" name='body' placeholder="your message...">
+         <button type="submit">send</button>
+      </form>
+      {%endif%}
+   </div>
+   <div>
+      <h3>Participants</h3>
+
+      {%for user in participants%}
+      <a href="/user-profile/{{user.id}}"><small>@{{user.username}}</small></a><br>
+      {%endfor%}
+ 
+   </div>
+</div>
+
+{%endblock%}
